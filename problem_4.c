@@ -62,7 +62,7 @@ int main(void)
             }
         }
     }
-    printf("\%ld\n", result);
+    printf("%ld\n", result);
     
     finish = clock();
     duration = (double)(finish - start) / CLOCKS_PER_SEC;
