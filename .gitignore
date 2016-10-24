@@ -1,6 +1,9 @@
 # Coming from github/gitignore.
 # <https://github.com/github/gitignore/blob/master/C.gitignore>
 
+# OS X
+.DS_Store
+
 # Prerequisites
 *.d
 
