@@ -31,52 +31,75 @@ int main(void)
         20,73,35,29,78,31,90, 1,74,31,49,71,48,86,81,16,23,57, 5,54,
          1,70,54,71,83,51,54,69,16,92,33,48,61,43,52, 1,89,19,67,48,};
     int n1, n2, n3, n4, i, j;
-    long P=0;
+    long P=0, x;
     
     start = clock();
     
-    for(i=0; i<20; i++) {
+    // Left to Right
+    printf("%s\n", "Left to Right");
+    for(i=0; i<(20-3); i++) {
         for (j=0; j<20; j++) {
-            // Left to Right
-            if (i<=(20-4)) {
-                n1 = d[i+0][j];
-                n2 = d[i+1][j];
-                n3 = d[i+1][j];
-                n4 = d[i+1][j];
-                if (P < n1*n2*n3*n4) {
-                    P = n1*n2*n3*n4;
-                }
+            n1 = d[i+0][j];
+            n2 = d[i+1][j];
+            n3 = d[i+2][j];
+            n4 = d[i+3][j];
+            x = n1*n2*n3*n4;
+            if (P < x) {
+                P = x;
             }
-            // Upper to Lower
-            if (j<=(20-4)) {
-                n1 = d[i][j+0];
-                n2 = d[i][j+1];
-                n3 = d[i][j+2];
-                n4 = d[i][j+3];
-                if (P < n1*n2*n3*n4) {
-                    P = n1*n2*n3*n4;
-                }
+            printf("[%2d,%2d], P=%8ld, X=%8ld=%2d*%2d*%2d*%2d\n",
+                   i, j, P, x, n1, n2, n3, n4);
+        }
+    }
+    
+    // Up to Down
+    printf("%s\n", "Up to Down");
+    for(i=0; i<20; i++) {
+        for (j=0; j<(20-3); j++) {
+            n1 = d[i][j+0];
+            n2 = d[i][j+1];
+            n3 = d[i][j+2];
+            n4 = d[i][j+3];
+            x = n1*n2*n3*n4;
+            if (P < x) {
+                P = x;
             }
-            // Left Upper to Right Lower
-            if (i<(20-4) && j<=(20-4)) {
-                n1 = d[i+0][j+0];
-                n2 = d[i+1][j+1];
-                n3 = d[i+2][j+2];
-                n4 = d[i+3][j+3];
-                if (P < n1*n2*n3*n4) {
-                    P = n1*n2*n3*n4;
-                }
+            printf("[%2d,%2d], P=%8ld, X=%8ld=%2d*%2d*%2d*%2d\n",
+                   i, j, P, x, n1, n2, n3, n4);
+        }
+    }
+    
+    // Left Up to Right Down
+    printf("%s\n", "Left Up to Right Down");
+    for(i=0; i<(20-3); i++) {
+        for (j=0; j<(20-4); j++) {
+            n1 = d[i+0][j+0];
+            n2 = d[i+1][j+1];
+            n3 = d[i+2][j+2];
+            n4 = d[i+3][j+3];
+            x = n1*n2*n3*n4;
+            if (P < x) {
+                P = x;
             }
-            // Right Upper to Left Lower
-            if (i>=3 && j>=3) {
-                n1 = d[i-0][j-0];
-                n2 = d[i-1][j-1];
-                n3 = d[i-2][j-2];
-                n4 = d[i-3][j-3];
-                if (P < n1*n2*n3*n4) {
-                    P = n1*n2*n3*n4;
-                }
+            printf("[%2d,%2d], P=%8ld, X=%8ld=%2d*%2d*%2d*%2d\n",
+                   i, j, P, x, n1, n2, n3, n4);
+        }
+    }
+    
+    // Right Up to Left Down
+    printf("%s\n", "Right Up to Left Down");
+    for(i=3; i<20; i++) {
+        for (j=0; j<(20-3); j++) {
+            n1 = d[i-0][j-0];
+            n2 = d[i-1][j-1];
+            n3 = d[i-2][j-2];
+            n4 = d[i-3][j-3];
+            x = n1*n2*n3*n4;
+            if (P < x) {
+                P = x;
             }
+            printf("[%2d,%2d], P=%8ld, X=%8ld=%2d*%2d*%2d*%2d\n",
+                   i, j, P, x, n1, n2, n3, n4);
         }
     }
     
