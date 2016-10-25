@@ -35,71 +35,73 @@ int main(void)
     
     start = clock();
     
-    // Left to Right
-    printf("%s\n", "Left to Right");
     for(i=0; i<(20-3); i++) {
         for (j=0; j<20; j++) {
-            n1 = d[i+0][j];
-            n2 = d[i+1][j];
-            n3 = d[i+2][j];
-            n4 = d[i+3][j];
-            x = n1*n2*n3*n4;
-            if (P < x) {
-                P = x;
+            printf("[%2d,%2d], P=%8ld\n", i, j, P);
+            
+            // Left to Right
+            if (j<(20-3)) {
+                n1 = d[i][j+0];
+                n2 = d[i][j+1];
+                n3 = d[i][j+2];
+                n4 = d[i][j+3];
+                x = n1*n2*n3*n4;
+                if (P < x) {
+                    P = x;
+                }
+                printf("\t L 2  R, X=%8ld=%2d*%2d*%2d*%2d\n",
+                       x, n1, n2, n3, n4);
+            } else {
+                printf("\t L 2  R, no result\n");
             }
-            printf("[%2d,%2d], P=%8ld, X=%8ld=%2d*%2d*%2d*%2d\n",
-                   i, j, P, x, n1, n2, n3, n4);
-        }
-    }
-    
-    // Up to Down
-    printf("%s\n", "Up to Down");
-    for(i=0; i<20; i++) {
-        for (j=0; j<(20-3); j++) {
-            n1 = d[i][j+0];
-            n2 = d[i][j+1];
-            n3 = d[i][j+2];
-            n4 = d[i][j+3];
-            x = n1*n2*n3*n4;
-            if (P < x) {
-                P = x;
+            
+            // Up to Down
+            if (i<(20-3)) {
+                n1 = d[i+0][j];
+                n2 = d[i+1][j];
+                n3 = d[i+2][j];
+                n4 = d[i+3][j];
+                x = n1*n2*n3*n4;
+                if (P < x) {
+                    P = x;
+                }
+                printf("\t U 2  D, X=%8ld=%2d*%2d*%2d*%2d\n",
+                       x, n1, n2, n3, n4);
+            } else {
+                printf("\t U 2  D, no result\n");
             }
-            printf("[%2d,%2d], P=%8ld, X=%8ld=%2d*%2d*%2d*%2d\n",
-                   i, j, P, x, n1, n2, n3, n4);
-        }
-    }
-    
-    // Left Up to Right Down
-    printf("%s\n", "Left Up to Right Down");
-    for(i=0; i<(20-3); i++) {
-        for (j=0; j<(20-4); j++) {
-            n1 = d[i+0][j+0];
-            n2 = d[i+1][j+1];
-            n3 = d[i+2][j+2];
-            n4 = d[i+3][j+3];
-            x = n1*n2*n3*n4;
-            if (P < x) {
-                P = x;
+            
+            // Left Up to Right Down
+            if (i<(20-3) && j<(20-3)) {
+                n1 = d[i+0][j+0];
+                n2 = d[i+1][j+1];
+                n3 = d[i+2][j+2];
+                n4 = d[i+3][j+3];
+                x = n1*n2*n3*n4;
+                if (P < x) {
+                    P = x;
+                }
+                printf("\tLU 2 RD, X=%8ld=%2d*%2d*%2d*%2d\n",
+                       x, n1, n2, n3, n4);
+            } else {
+                printf("\tLU 2 RD, no result\n");
             }
-            printf("[%2d,%2d], P=%8ld, X=%8ld=%2d*%2d*%2d*%2d\n",
-                   i, j, P, x, n1, n2, n3, n4);
-        }
-    }
-    
-    // Right Up to Left Down
-    printf("%s\n", "Right Up to Left Down");
-    for(i=3; i<20; i++) {
-        for (j=0; j<(20-3); j++) {
-            n1 = d[i-0][j-0];
-            n2 = d[i-1][j-1];
-            n3 = d[i-2][j-2];
-            n4 = d[i-3][j-3];
-            x = n1*n2*n3*n4;
-            if (P < x) {
-                P = x;
+            
+            // Right Up to Left Down
+            if (i<(20-3) && j>=3) {
+                n1 = d[i+0][j-0];
+                n2 = d[i+1][j-1];
+                n3 = d[i+2][j-2];
+                n4 = d[i+3][j-3];
+                x = n1*n2*n3*n4;
+                if (P < x) {
+                    P = x;
+                }
+                printf("\tRU 2 LD, X=%8ld=%2d*%2d*%2d*%2d\n",
+                       x, n1, n2, n3, n4);
+            } else {
+                printf("\tRU 2 LD, no result\n");
             }
-            printf("[%2d,%2d], P=%8ld, X=%8ld=%2d*%2d*%2d*%2d\n",
-                   i, j, P, x, n1, n2, n3, n4);
         }
     }
     
