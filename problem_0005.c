@@ -1,4 +1,6 @@
+// Problem 0003 @ <Project Euler>
 #include <stdio.h>
+#include <time.h>
 #include <stdlib.h>
 
 #define MAX_PRIME_COUNT 8
@@ -15,7 +17,7 @@ struct prime_count {
 typedef struct prime_count pct;
 
 // prime factor
-int get_prime_factor2(const int n, pct p[])
+int get_prime_factor(const int n, pct p[])
 {
     if (n < 2) {
         return 1;
@@ -45,6 +47,11 @@ int get_prime_factor2(const int n, pct p[])
 
 int main(void)
 {
+    clock_t start, finish;
+    double  duration;
+    
+    start = clock();
+    
     pct pct20[MAX_PRIME_COUNT], result[MAX_PRIME_COUNT];
     int n = 20;
     
@@ -59,7 +66,7 @@ int main(void)
             pct20[i].power = 0;
         }
         
-        get_prime_factor2(i, pct20);
+        get_prime_factor(i, pct20);
         
         for (int i=0; i<MAX_PRIME_COUNT; i++) {
             if (pct20[i].power > result[i].power) {
@@ -77,6 +84,10 @@ int main(void)
         }
     }
     printf("\n%ld\n", m);
+    
+    finish = clock();
+    duration = (double)(finish - start) / CLOCKS_PER_SEC;
+    printf( "%f seconds\n", duration );
     
     return 0;
 }

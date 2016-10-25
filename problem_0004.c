@@ -1,3 +1,4 @@
+// Problem 0004 @ <Project Euler>
 // A stupid algorithm
 
 #include <stdio.h>

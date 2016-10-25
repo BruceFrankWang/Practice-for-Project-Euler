@@ -1,4 +1,4 @@
-// Problem 7 @ <Project Euler>
+// Problem 0007 @ <Project Euler>
 
 #include <stdio.h>
 #include <time.h>
