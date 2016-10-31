@@ -1,6 +1,9 @@
 # Coming from github/gitignore.
 # <https://github.com/github/gitignore/blob/master/C.gitignore>
 
+# Special
+test.c
+
 # OS X
 .DS_Store
 
