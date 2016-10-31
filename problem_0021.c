@@ -8,17 +8,7 @@
 
 #define NUMBER 10000
 
-struct divisor_table_node {
-    int divisor;
-    struct divisor_table_node *next;
-};
-
-typedef struct divisor_table_node dtn;
-typedef dtn *dt;
-
-int isAmicableNumbers(int a, int b);
 long long getSumOfDivisors(long long n);
-dt getDivisor(long long n, int prime);
 
 int main(void) {
     clock_t start, finish;
@@ -50,14 +40,6 @@ int main(void) {
     return 0;
 }
 
-int isAmicableNumbers(int a, int b) {
-    if (getSumOfDivisors(a) == b && getSumOfDivisors(b) == a) {
-        return 1;
-    } else {
-        return 0;
-    }
-}
-
 long long getSumOfDivisors(long long n) {
     long long sum = 0;
     for (long long i=1; i<=(n/2+1); i++) {
@@ -66,21 +48,4 @@ long long getSumOfDivisors(long long n) {
         }
     }
     return sum;
-}
-
-dt getDivisor(long long n, int prime) {
-    dt result = (dt)malloc(sizeof(dtn));
-    dt pt;
-    result->divisor = 0;
-    result->next = NULL;
-    pt = result->next;
-    for (long long i=1; i<=(n/2); i++) {
-        if (n % i == 0) {
-            dt node = (dt)malloc(sizeof(dtn));
-            node->divisor = i;
-            node->next = NULL;
-            pt->next = node;
-        }
-    }
-    return result;
 }
