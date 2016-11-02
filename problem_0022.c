@@ -22,7 +22,7 @@ int main(void) {
     start = clock();
     
     FILE *fp;
-    fp = fopen("p022_names.txt", "r");
+    fp = fopen("problem_0022_names.txt", "r");
     char c;
     char *name = NULL;
     nas list[MAX];
