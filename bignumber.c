@@ -19,10 +19,30 @@ size_t getDigit(long long n) {
 
 char *bnFromInteger(long long n) {
     // Integer to String.
+    if(n == 0) return "0";
     size_t length = getDigit(n);
     char *bn = (char *)malloc(length + 1);
     snprintf(bn, length + 1, "%lld", n);
     return bn;
+}
+
+char *bnFromIntegerWithBase(long long n, int base) {
+    // Integer to String.
+    if(n == 0) return "0";
+    static char buf[64] = {0};
+    
+    int i = 62;
+    int sign = (n < 0);
+    if(sign) n = -n;
+    
+    for(; n && i ; --i, n /= base) {
+        buf[i] = "0123456789abcdef"[n % base];
+    }
+
+    if(sign) {
+        buf[i--] = '-';
+    }
+    return &buf[i+1];
 }
 
 char *bnRemovePrefixZero(const char *bn) {

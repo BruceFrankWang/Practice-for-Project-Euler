@@ -47,6 +47,7 @@ size_t getDigit(long long n);
 
 // 转换整数为字符串
 char *bnFromInteger(long long n);
+char *bnFromIntegerWithBase(long long n, int base);
 
 // 打印大数
 void bnPrint(const char *bn, const int printPrefixZero);
