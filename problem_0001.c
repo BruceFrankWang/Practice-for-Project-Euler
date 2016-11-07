@@ -7,9 +7,10 @@ int main(void)
 {
     clock_t start, finish;
     double  duration;
-    int result = 0;
-    
     start = clock();
+    
+    // main function.
+    int result = 0;
     
     for (int i=1; i<1000; i++) {
         if (i % 3 == 0) {
@@ -23,6 +24,8 @@ int main(void)
         }
     }
     printf("%d\n", result);
+    
+    // end of main function.
     
     finish = clock();
     duration = (double)(finish - start) / CLOCKS_PER_SEC;
