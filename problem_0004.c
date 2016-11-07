@@ -22,7 +22,7 @@ int main(void)
     for (int a = MIN; a <= MAX; a++) {
         for (int b = MIN; b <= MAX; b++) {
             x = a*b;
-            temp = bnFromIntegerWithBase(x, 10);
+            temp = bnFromInteger(x);
             if (isPalindromeString(temp) != 0 && result < x) {
                 result = x;
             }
